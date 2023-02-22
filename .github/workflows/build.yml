@@ -21,4 +21,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           branch: gh-pages
-          folder: dist/guitar-to-tabs
+          folder: dist/bass-to-tab
