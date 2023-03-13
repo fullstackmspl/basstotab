@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://3.140.182.37:8000/';
+  private apiUrl = environment.apiUrls.master;
 
   constructor(private http: HttpClient) { }
 
@@ -24,9 +25,10 @@ export class ApiService {
     return this.http.get(url, { headers: this.getHeaders(), params });
   }
 
-  post(endpoint: string, body: any): Observable<any> {
+  post(endpoint: string, body: FormData): Observable<any> {
     const url = `${this.apiUrl}/${endpoint}`;
-    return this.http.post(url, body, { headers: this.getHeaders() });
+    const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
+    return this.http.post(url, body,);
   }
 
   put(endpoint: string, body: any): Observable<any> {
