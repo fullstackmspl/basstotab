@@ -28,7 +28,7 @@ export class ApiService {
   post(endpoint: string, body: FormData): Observable<any> {
     const url = `${this.apiUrl}/${endpoint}`;
     const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-    return this.http.post(url, body,);
+    return this.http.post(url, body, { headers: this.getHeaders() });
   }
 
   put(endpoint: string, body: any): Observable<any> {
